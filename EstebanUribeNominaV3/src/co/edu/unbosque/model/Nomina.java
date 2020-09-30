@@ -15,7 +15,7 @@ public class Nomina{
 		documento = new String[26];
 	}
 	
-	public String procesarNomina() {
+	public void procesarNomina() {
 		archivo.leerArchivo();
 		salario = archivo.getSalario();
 		
@@ -42,15 +42,14 @@ public class Nomina{
 			nombreNomina = "Nomina3";
 		}
 		sueldoNeto = salario[i] - (salario[i] * retención);
-		data = documento[i] + " , " + sueldoNeto;
+		data = documento[i] + " , " + sueldoNeto + "\n";
 		System.out.println(data);
+		
 		
 		archivo.escribirArchivo(data, nombreNomina);
 		
-		
-		
 		}
-		return "";
+		
 	}
 
 	public ArchivoNomina getArchivo() {

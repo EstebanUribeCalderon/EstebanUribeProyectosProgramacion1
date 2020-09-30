@@ -64,24 +64,28 @@ public class ArchivoNomina {
 	}
 		public int escribirArchivo(String dato, String nombre) {
 			
+			
 			File f = new File(this.nomina + nombre + ".txt"); // f-> carga el archivo
 			
+			while(!f.exists()) {
+			
 			try {
-				if(!f.exists()) {
 					f.createNewFile();
-				}
-				FileWriter fw = new FileWriter(f); // fr-> Crea el flujo hacia f
-				PrintWriter pw = new PrintWriter(fw); //pw-> Permite la escritura en el archivo
+					FileWriter fw = new FileWriter(f, true); // fr-> Crea el flujo hacia f
+					PrintWriter pw = new PrintWriter(fw); //pw-> Permite la escritura en el archivo
+					
+					pw.write(dato); //se escribe el contenido del parámetro dato en el archivo
+					
+					fw.close();
+					pw.close();
 				
-				pw.println(dato); //se escribe el contenido del parámetro dato en el archivo
-				
-				fw.close();
-				
+	
+		
 			} catch (IOException e) {
 				return -1;
-			} 
 			
-			return 0;
+			} }
+			return 0; 
 		}
 
 

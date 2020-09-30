@@ -5,9 +5,7 @@ import java.io.*;
 public class ArchivoNomina {
 	
 	private String archivoData;
-	private String nomina1;
-	private String nomina2;
-	private String nomina3;
+	private String nomina;
 	private String[] documento;
 	private String[] nombre;
 	private double[] salario;
@@ -19,10 +17,7 @@ public class ArchivoNomina {
 		salario = new double[26];
 		i = 0;
 		archivoData = "./data/datosprincipales.csv";
-		nomina1 = "./data/nomina1.txt";
-		nomina2 = "./data/nomina2.txt";
-		nomina3 = "./data/nomina3.txt";
-		
+		nomina = "./data/";
 	}
 	
 
@@ -67,11 +62,14 @@ public class ArchivoNomina {
 		}
 		return "";
 	}
-		public int escribirArchivo(String dato, String dato1, String dato2) {
+		public int escribirArchivo(String dato, String nombre) {
 			
-			File f = new File(this.nomina1); // f-> carga el archivo
+			File f = new File(this.nomina + nombre + ".txt"); // f-> carga el archivo
 			
 			try {
+				if(!f.exists()) {
+					f.createNewFile();
+				}
 				FileWriter fw = new FileWriter(f); // fr-> Crea el flujo hacia f
 				PrintWriter pw = new PrintWriter(fw); //pw-> Permite la escritura en el archivo
 				
